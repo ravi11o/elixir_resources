@@ -1,0 +1,5 @@
+<div class="jumbotron">
+  <h2>Admin Section</h2>
+  <p class="lead">Please Login to Continue.</p>
+  <%= link "Login with Google", to: admin_auth_path(@conn, :request, "google"), class: "btn btn-primary" %>
+</div>
