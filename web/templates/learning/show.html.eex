@@ -1,0 +1,44 @@
+<h2>Show learning</h2>
+
+<ul>
+
+  <li>
+    <strong>Resource:</strong>
+    <%= @learning.resource %>
+  </li>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @learning.title %>
+  </li>
+
+  <li>
+    <strong>Cover:</strong>
+    <%= @learning.cover %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @learning.description %>
+  </li>
+
+
+  <li>
+    <strong>Website:</strong>
+    <%= @learning.website %>
+  </li>
+
+  <li>
+    <strong>Author:</strong>
+    <%= @learning.author %>
+  </li>
+
+  <li>
+    <strong>Price:</strong>
+    <%= @learning.price %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: learning_path(@conn, :edit, @learning) %>
+<%= link "Back", to: learning_path(@conn, :index) %>

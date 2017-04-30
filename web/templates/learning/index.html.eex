@@ -1,0 +1,34 @@
+<h2>Listing learnings</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Resource</th>
+      <th>Title</th>
+      <th>Website</th>
+      <th>Author</th>
+      <th>Price</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for learning <- @learnings do %>
+    <tr>
+      <td><%= learning.resource %></td>
+      <td><%= learning.title %></td>
+      <td><%= learning.website %></td>
+      <td><%= learning.author %></td>
+      <td><%= learning.price %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: learning_path(@conn, :show, learning), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: learning_path(@conn, :edit, learning), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: learning_path(@conn, :delete, learning), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New learning", to: learning_path(@conn, :new) %>

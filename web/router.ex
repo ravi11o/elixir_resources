@@ -18,6 +18,7 @@ defmodule ElixirResources.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    resources "/learnings", LearningController
   end
 
   scope "/", as: :admin do
@@ -33,6 +34,7 @@ defmodule ElixirResources.Router do
   defp assign_current_user(conn, _) do
     assign(conn, :current_user, get_session(conn, :current_user))
   end
+
 
   # Other scopes may use custom stacks.
   # scope "/api", ElixirResources do
