@@ -1,0 +1,6 @@
+<h2>Edit framework</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: framework_path(@conn, :update, @framework) %>
+
+<%= link "Back", to: framework_path(@conn, :index) %>

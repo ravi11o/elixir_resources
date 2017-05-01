@@ -1,0 +1,38 @@
+<h2>Listing postandtalks</h2>
+<div class="text-right">
+  <%= link "New post and talk", to: post_and_talk_path(@conn, :new), class: "btn btn-primary" %>
+</div>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Resource</th>
+      <th>Title</th>
+      <th>Writer</th>
+      <th>Price</th>
+      <th>Tags</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for post_and_talk <- @postandtalks do %>
+    <tr>
+      <td><%= post_and_talk.resource %></td>
+      <td><%= post_and_talk.title %></td>
+      <td><%= post_and_talk.writer %></td>
+      <td><%= post_and_talk.price %></td>
+      <td><%= post_and_talk.tags %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: post_and_talk_path(@conn, :show, post_and_talk), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: post_and_talk_path(@conn, :edit, post_and_talk), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: post_and_talk_path(@conn, :delete, post_and_talk), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+

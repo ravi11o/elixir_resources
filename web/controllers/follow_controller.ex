@@ -1,0 +1,77 @@
+defmodule ElixirResources.FollowController do
+  use ElixirResources.Web, :controller
+
+  alias ElixirResources.Follow
+  alias ElixirResources.Query
+
+  def index(conn, _params) do
+    follow = Repo.all(Follow)
+    render(conn, "index.html", follow: follow)
+  end
+
+  def new(conn, _params) do
+    changeset = Follow.changeset(%Follow{})
+    render(conn, "new.html", changeset: changeset)
+  end
+
+  def create(conn, %{"follow" => follow_params}) do
+    slug = 
+      follow_params
+      |> Map.get("name")
+      |> Slugger.slugify_downcase
+    follow_params = 
+      if Query.check_slug(Follow, slug) do
+        Map.put_new(follow_params, "slug", slug <> "-" <> UUID.uuid1())
+      else
+        Map.put_new(follow_params, "slug", slug)
+      end
+
+    changeset = Follow.changeset(%Follow{}, follow_params)
+
+    case Repo.insert(changeset) do
+      {:ok, _follow} ->
+        conn
+        |> put_flash(:info, "Follow created successfully.")
+        |> redirect(to: follow_path(conn, :index))
+      {:error, changeset} ->
+        render(conn, "new.html", changeset: changeset)
+    end
+  end
+
+  def show(conn, %{"id" => id}) do
+    follow = Repo.get!(Follow, id)
+    render(conn, "show.html", follow: follow)
+  end
+
+  def edit(conn, %{"id" => id}) do
+    follow = Repo.get!(Follow, id)
+    changeset = Follow.changeset(follow)
+    render(conn, "edit.html", follow: follow, changeset: changeset)
+  end
+
+  def update(conn, %{"id" => id, "follow" => follow_params}) do
+    follow = Repo.get!(Follow, id)
+    changeset = Follow.changeset(follow, follow_params)
+
+    case Repo.update(changeset) do
+      {:ok, follow} ->
+        conn
+        |> put_flash(:info, "Follow updated successfully.")
+        |> redirect(to: follow_path(conn, :show, follow))
+      {:error, changeset} ->
+        render(conn, "edit.html", follow: follow, changeset: changeset)
+    end
+  end
+
+  def delete(conn, %{"id" => id}) do
+    follow = Repo.get!(Follow, id)
+
+    # Here we use delete! (with a bang) because we expect
+    # it to always work (and if it does not, it will raise).
+    Repo.delete!(follow)
+
+    conn
+    |> put_flash(:info, "Follow deleted successfully.")
+    |> redirect(to: follow_path(conn, :index))
+  end
+end

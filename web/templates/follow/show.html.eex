@@ -1,0 +1,28 @@
+<h2>Show follow</h2>
+
+<ul>
+
+  <li>
+    <strong>Resource:</strong>
+    <%= @follow.resource %>
+  </li>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @follow.name %>
+  </li>
+
+  <li>
+    <strong>Cover:</strong>
+    <%= @follow.cover %>
+  </li>
+
+  <li>
+    <strong>Website:</strong>
+    <%= @follow.website %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: follow_path(@conn, :edit, @follow) %>
+<%= link "Back", to: follow_path(@conn, :index) %>

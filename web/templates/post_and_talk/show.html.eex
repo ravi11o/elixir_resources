@@ -1,0 +1,43 @@
+<h2>Show post and talk</h2>
+
+<ul>
+
+  <li>
+    <strong>Resource:</strong>
+    <%= @post_and_talk.resource %>
+  </li>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @post_and_talk.title %>
+  </li>
+
+  <li>
+    <strong>Writer:</strong>
+    <%= @post_and_talk.writer %>
+  </li>
+
+  <li>
+    <strong>Website:</strong>
+    <%= @post_and_talk.website %>
+  </li>
+
+  <li>
+    <strong>Cover:</strong>
+    <%= @post_and_talk.cover %>
+  </li>
+
+  <li>
+    <strong>Price:</strong>
+    <%= @post_and_talk.price %>
+  </li>
+
+  <li>
+    <strong>Tags:</strong>
+    <%= @post_and_talk.tags %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: post_and_talk_path(@conn, :edit, @post_and_talk) %>
+<%= link "Back", to: post_and_talk_path(@conn, :index) %>

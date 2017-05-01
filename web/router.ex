@@ -19,6 +19,10 @@ defmodule ElixirResources.Router do
 
     get "/", PageController, :index
     resources "/learnings", LearningController
+    resources "/postandtalks", PostAndTalkController
+    resources "/frameworks", FrameworkController
+    resources "/follow", FollowController
+
   end
 
   scope "/", as: :admin do

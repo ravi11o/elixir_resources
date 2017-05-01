@@ -1,0 +1,28 @@
+<h2>Show framework</h2>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @framework.title %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @framework.description %>
+  </li>
+
+  <li>
+    <strong>Cover:</strong>
+    <%= @framework.cover %>
+  </li>
+
+  <li>
+    <strong>Website:</strong>
+    <%= @framework.website %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: framework_path(@conn, :edit, @framework) %>
+<%= link "Back", to: framework_path(@conn, :index) %>

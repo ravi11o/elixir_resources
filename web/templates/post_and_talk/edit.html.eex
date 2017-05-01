@@ -1,0 +1,6 @@
+<h2>Edit post and talk</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: post_and_talk_path(@conn, :update, @post_and_talk) %>
+
+<%= link "Back", to: post_and_talk_path(@conn, :index) %>

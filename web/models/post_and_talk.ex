@@ -1,15 +1,16 @@
-defmodule ElixirResources.Learning do
+defmodule ElixirResources.PostAndTalk do
   use ElixirResources.Web, :model
 
-  schema "learnings" do
+  schema "postandtalks" do
     field :resource, :string
     field :title, :string
-    field :cover, :string
-    field :description, :string
     field :slug, :string
+    field :writer, :string
+    field :description, :string
     field :website, :string
-    field :author, :string
+    field :cover, :string
     field :price, :string
+    field :tags, {:array, :string}
 
     timestamps()
   end
@@ -19,10 +20,10 @@ defmodule ElixirResources.Learning do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:resource, :title, :cover, :description, :slug, :website, :author, :price])
+    |> cast(params, [:resource, :title, :slug, :description, :writer, :website, :cover, :price, :tags])
     |> validate_required([:resource, :title, :slug, :website, :price])
+    |> validate_inclusion(:resource, ["post", "talk"])
     |> unique_constraint(:slug)
-    |> validate_inclusion(:resource, ["book", "video", "practice"])
     |> validate_inclusion(:price, ["free", "paid"])
   end
 end

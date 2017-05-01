@@ -20,12 +20,12 @@ defmodule ElixirResources.LearningController do
       |> Map.get("title")
       |> Slugger.slugify_downcase
     learning_params = 
-      if Query.check_slug(slug) do
+      if Query.check_slug(Learning, slug) do
         Map.put_new(learning_params, "slug", slug <> "-" <> UUID.uuid1())
       else
         Map.put_new(learning_params, "slug", slug)
       end
-    IO.inspect(learning_params)
+
     changeset = Learning.changeset(%Learning{}, learning_params)
 
     case Repo.insert(changeset) do
