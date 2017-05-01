@@ -1,0 +1,31 @@
+<h2>Listing applications</h2>
+<div class="text-right">
+  <%= link "New application", to: application_path(@conn, :new), class: "btn btn-primary" %>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Website</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for application <- @applications do %>
+    <tr>
+      <td><%= application.title %></td>
+      <td><%= application.website %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: application_path(@conn, :show, application), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: application_path(@conn, :edit, application), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: application_path(@conn, :delete, application), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+

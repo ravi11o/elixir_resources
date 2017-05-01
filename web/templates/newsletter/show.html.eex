@@ -1,0 +1,28 @@
+<h2>Show newsletter</h2>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @newsletter.title %>
+  </li>
+
+  <li>
+    <strong>Cover:</strong>
+    <%= @newsletter.cover %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @newsletter.description %>
+  </li>
+
+  <li>
+    <strong>Website:</strong>
+    <%= @newsletter.website %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: newsletter_path(@conn, :edit, @newsletter) %>
+<%= link "Back", to: newsletter_path(@conn, :index) %>

@@ -1,0 +1,6 @@
+<h2>New newsletter</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: newsletter_path(@conn, :create) %>
+
+<%= link "Back", to: newsletter_path(@conn, :index) %>

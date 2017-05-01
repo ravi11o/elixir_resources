@@ -1,0 +1,31 @@
+<h2>Listing newsletters</h2>
+<div class="text-right"> 
+<%= link "New newsletter", to: newsletter_path(@conn, :new), class: "btn btn-primary" %>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Website</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for newsletter <- @newsletters do %>
+    <tr>
+      <td><%= newsletter.title %></td>
+      <td><%= newsletter.website %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: newsletter_path(@conn, :show, newsletter), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: newsletter_path(@conn, :edit, newsletter), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: newsletter_path(@conn, :delete, newsletter), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+

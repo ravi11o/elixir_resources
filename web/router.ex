@@ -25,6 +25,9 @@ defmodule ElixirResources.Router do
     resources "/communities", CommunityController
     resources "/jobs", JobController
     resources "/companies", CompanyController
+    resources "/applications", ApplicationController
+    resources "/newsletters", NewsletterController
+
 
 
   end

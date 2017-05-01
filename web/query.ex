@@ -9,6 +9,8 @@ defmodule ElixirResources.Query do
   alias ElixirResources.Community
   alias ElixirResources.Job
   alias ElixirResources.Company
+  alias ElixirResources.Application
+  alias ElixirResources.Newsletter
 
   def check_email(email) do
     Repo.get_by(User, email: email)
@@ -29,6 +31,8 @@ defmodule ElixirResources.Query do
       Community -> Repo.get_by(Community, slug: slug)
       Job -> Repo.get_by(Job, slug: slug)
       Company -> Repo.get_by(Company, slug: slug)
+      Application -> Repo.get_by(Application, slug: slug)
+      Newsletter -> Repo.get_by(Newsletter, slug: slug)
 
       _ -> "No Model found."
     end
