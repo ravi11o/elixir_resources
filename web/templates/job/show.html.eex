@@ -1,0 +1,33 @@
+<h2>Show job</h2>
+
+<ul>
+
+  <li>
+    <strong>Source:</strong>
+    <%= @job.source %>
+  </li>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @job.title %>
+  </li>
+
+  <li>
+    <strong>Cover:</strong>
+    <%= @job.cover %>
+  </li>
+
+  <li>
+    <strong>Website:</strong>
+    <%= @job.website %>
+  </li>
+
+  <li>
+    <strong>Remote:</strong>
+    <%= @job.remote %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: job_path(@conn, :edit, @job) %>
+<%= link "Back", to: job_path(@conn, :index) %>

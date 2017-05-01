@@ -10,7 +10,6 @@
       <th>Resource</th>
       <th>Title</th>
       <th>Writer</th>
-      <th>Price</th>
       <th>Tags</th>
 
       <th></th>
@@ -22,7 +21,6 @@
       <td><%= post_and_talk.resource %></td>
       <td><%= post_and_talk.title %></td>
       <td><%= post_and_talk.writer %></td>
-      <td><%= post_and_talk.price %></td>
       <td><%= post_and_talk.tags %></td>
 
       <td class="text-right">

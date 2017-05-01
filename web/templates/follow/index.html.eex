@@ -1,11 +1,13 @@
 <h2>Listing follow</h2>
+<div class="text-right"> 
+<%= link "New follow", to: follow_path(@conn, :new), class: "btn btn-primary" %>
+</div>
 
 <table class="table">
   <thead>
     <tr>
       <th>Resource</th>
       <th>Name</th>
-      <th>Cover</th>
       <th>Website</th>
 
       <th></th>
@@ -16,7 +18,6 @@
     <tr>
       <td><%= follow.resource %></td>
       <td><%= follow.name %></td>
-      <td><%= follow.cover %></td>
       <td><%= follow.website %></td>
 
       <td class="text-right">
@@ -29,4 +30,4 @@
   </tbody>
 </table>
 
-<%= link "New follow", to: follow_path(@conn, :new) %>
+

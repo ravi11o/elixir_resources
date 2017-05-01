@@ -1,0 +1,35 @@
+<h2>Listing communities</h2>
+<div class="text-right"> 
+<%= link "New community", to: community_path(@conn, :new), class: "btn btn-primary" %>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Social type</th>
+      <th>Website</th>
+     
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for community <- @communities do %>
+    <tr>
+      <td><%= community.title %></td>
+      <td><%= community.social_type %></td>
+      <td><%= community.website %></td>
+    
+
+      <td class="text-right">
+        <%= link "Show", to: community_path(@conn, :show, community), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: community_path(@conn, :edit, community), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: community_path(@conn, :delete, community), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+

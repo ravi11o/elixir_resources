@@ -22,6 +22,10 @@ defmodule ElixirResources.Router do
     resources "/postandtalks", PostAndTalkController
     resources "/frameworks", FrameworkController
     resources "/follow", FollowController
+    resources "/communities", CommunityController
+    resources "/jobs", JobController
+    resources "/companies", CompanyController
+
 
   end
 

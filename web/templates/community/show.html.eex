@@ -1,0 +1,33 @@
+<h2>Show community</h2>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @community.title %>
+  </li>
+
+  <li>
+    <strong>Social type:</strong>
+    <%= @community.social_type %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @community.description %>
+  </li>
+
+  <li>
+    <strong>Website:</strong>
+    <%= @community.website %>
+  </li>
+
+  <li>
+    <strong>Cover:</strong>
+    <%= @community.cover %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: community_path(@conn, :edit, @community) %>
+<%= link "Back", to: community_path(@conn, :index) %>

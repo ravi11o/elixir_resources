@@ -1,0 +1,35 @@
+<h2>Listing jobs</h2>
+<div class="text-right">
+  <%= link "New job", to: job_path(@conn, :new), class: "btn btn-primary" %>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Source</th>
+      <th>Title</th>
+      <th>Website</th>
+      <th>Remote</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for job <- @jobs do %>
+    <tr>
+      <td><%= job.source %></td>
+      <td><%= job.title %></td>
+      <td><%= job.website %></td>
+      <td><%= job.remote %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: job_path(@conn, :show, job), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: job_path(@conn, :edit, job), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: job_path(@conn, :delete, job), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+
