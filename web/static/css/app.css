@@ -1,1 +1,6 @@
 /* This file is for your main application css. */
+
+.sidebar {
+  margin-top: 20px;
+  border-right: 2px solid blue;
+}

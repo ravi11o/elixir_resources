@@ -14,10 +14,20 @@ defmodule ElixirResources.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :admin_layout do
+    plug :put_layout, {ElixirResources.LayoutView, :dashboard}
+  end
+
   scope "/", ElixirResources do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    
+  end
+
+  scope "/admin", ElixirResources do
+    pipe_through [:browser, :admin_layout]
+
     resources "/learnings", LearningController
     resources "/postandtalks", PostAndTalkController
     resources "/frameworks", FrameworkController
@@ -27,9 +37,7 @@ defmodule ElixirResources.Router do
     resources "/companies", CompanyController
     resources "/applications", ApplicationController
     resources "/newsletters", NewsletterController
-
-
-
+    get "/dashboard", LearningController, :index
   end
 
   scope "/", as: :admin do

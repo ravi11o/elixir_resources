@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>ElixirResources!</title>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">Everything Elixir</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/admin/dashboard">Admin Panel</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="<%= learning_path(@conn, :index) %>"> Learning <span class="sr-only">(current)</span></a></li>
+            <li><a href="<%= post_and_talk_path(@conn, :index) %>">Post & Talks</a></li>
+            <li><a href="<%= framework_path(@conn, :index) %>">Frameworks</a></li>
+            <li><a href="<%= follow_path(@conn, :index) %>">Follow</a></li>
+            <li><a href="<%= community_path(@conn, :index) %>">Community</a></li>
+            <li><a href="<%= job_path(@conn, :index) %>">Jobs</a></li>
+            <li><a href="<%= company_path(@conn, :index) %>">Companies</a></li>
+            <li><a href="<%= application_path(@conn, :index) %>">Applications</a></li>
+            <li><%= link "Newsletter", to: newsletter_path(@conn, :index) %></li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-md-10 main">
+          <h1 class="page-header">Dashboard</h1>
+          <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+          <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+
+          <main role="main">
+            <%= render @view_module, @view_template, assigns %>
+          </main>
+        </div> 
+      </div>
+    </div>
+    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+  </body>
+</html>
