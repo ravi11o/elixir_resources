@@ -1,5 +1,11 @@
 <div class="jumbotron">
-  <h2>Admin Section</h2>
-  <p class="lead">Please Login to Continue.</p>
-  <%= link "Login with Google", to: admin_auth_path(@conn, :request, "google"), class: "btn btn-primary" %>
+  <%= if @current_user do %>
+    <p>Already Logged In as <%= @current_user.email %></p>
+    <%= link "Log Out", to: admin_auth_path(@conn, :delete), method: :delete, class: "btn btn-danger" %></li>
+  <% else %>
+    <h2>Admin Section</h2>
+    <p class="lead">Please Login to Continue.</p>
+    <%= link "Login with Google", to: admin_auth_path(@conn, :request, "google"), class: "btn btn-primary" %>
+  <% end %>
+  
 </div>

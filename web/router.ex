@@ -5,9 +5,11 @@ defmodule ElixirResources.Router do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_flash
+    plug :assign_current_user
     plug :protect_from_forgery
     plug :put_secure_browser_headers
-    plug :assign_current_user
+    
+    
   end
 
   pipeline :api do
@@ -16,6 +18,7 @@ defmodule ElixirResources.Router do
 
   pipeline :admin_layout do
     plug :put_layout, {ElixirResources.LayoutView, :dashboard}
+    plug ElixirResources.AuthenticateAdmin
   end
 
   scope "/", ElixirResources do
@@ -51,7 +54,8 @@ defmodule ElixirResources.Router do
 
 
   defp assign_current_user(conn, _) do
-    assign(conn, :current_user, get_session(conn, :current_user))
+    current_user = get_session(conn, :current_user)
+    assign(conn, :current_user, current_user)
   end
 
 

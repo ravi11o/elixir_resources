@@ -5,6 +5,7 @@
     <h2><%= gettext "Welcome to %{name}", name: "Phoenix!" %></h2>
     <p class="lead">A productive web framework that<br />does not compromise
      speed and maintainability.</p>
+     <%= link "Login with Google", to: admin_auth_path(@conn, :request, "google"), class: "btn btn-primary" %>
   <% end %>
   
 </div>
